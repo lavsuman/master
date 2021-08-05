@@ -3,7 +3,8 @@
 	"properties": {
 		"parameters": {
 			"ls_secret": {
-				"type": "String"
+				"type": "String",
+				"defaultValue": "dlswapna"
 			}
 		},
 		"annotations": [],
