@@ -63,7 +63,13 @@
 				"outputs": [
 					{
 						"referenceName": "ds_output",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"key": {
+								"value": "@pipeline().parameters.param_key",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			},
@@ -82,6 +88,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"param_key": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"lastPublishTime": "2021-08-05T10:43:42Z"
 	},
