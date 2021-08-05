@@ -124,7 +124,10 @@
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "ls_new",
-					"type": "LinkedServiceReference"
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"ls_secret": "dlswapna"
+					}
 				},
 				"annotations": [],
 				"type": "DelimitedText",
