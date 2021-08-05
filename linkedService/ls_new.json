@@ -2,8 +2,8 @@
 	"name": "ls_new",
 	"properties": {
 		"parameters": {
-			"secret": {
-				"type": "string"
+			"ls_secret": {
+				"type": "String"
 			}
 		},
 		"annotations": [],
@@ -17,7 +17,7 @@
 					"type": "LinkedServiceReference"
 				},
 				"secretName": {
-					"value": "@linkedService().secret",
+					"value": "@linkedService().ls_secret",
 					"type": "Expression"
 				}
 			}
