@@ -11,10 +11,6 @@
 			"type": "string",
 			"defaultValue": "https://keyswapna.vault.azure.net/"
 		},
-		"ls_dl_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://dlswapna.dfs.core.windows.net"
-		},
 		"ls_new_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://dlswapna.dfs.core.windows.net/"
@@ -48,33 +44,16 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ls_dl')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('ls_dl_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "AzureKeyVaultSecret",
-						"store": {
-							"referenceName": "ls_swapnarg_dl",
-							"type": "LinkedServiceReference"
-						},
-						"secretName": "dlswapna"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ls_swapnarg_dl')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/ls_new')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"parameters": {
+					"ls_secret": {
+						"type": "String",
+						"defaultValue": "dlswapna"
+					}
+				},
 				"annotations": [],
 				"type": "AzureBlobFS",
 				"typeProperties": {
@@ -85,7 +64,10 @@
 							"referenceName": "ls_swapnarg_dl",
 							"type": "LinkedServiceReference"
 						},
-						"secretName": "dlswapna"
+						"secretName": {
+							"value": "@linkedService().ls_secret",
+							"type": "Expression"
+						}
 					}
 				}
 			},
@@ -128,7 +110,10 @@
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "ls_new",
-					"type": "LinkedServiceReference"
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"ls_secret": "dlswapna"
+					}
 				},
 				"annotations": [],
 				"type": "DelimitedText",

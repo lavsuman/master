@@ -5,9 +5,6 @@
 		"factoryName": {
 			"value": "adf2swapna"
 		},
-		"ls_dl_properties_typeProperties_url": {
-			"value": "https://dlswapna.dfs.core.windows.net"
-		},
 		"ls_new_properties_typeProperties_url": {
 			"value": "https://dlswapna.dfs.core.windows.net/"
 		},

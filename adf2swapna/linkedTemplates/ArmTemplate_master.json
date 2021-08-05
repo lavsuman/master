@@ -7,10 +7,6 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adf2swapna"
 		},
-		"ls_dl_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://dlswapna.dfs.core.windows.net"
-		},
 		"ls_new_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://dlswapna.dfs.core.windows.net/"
@@ -48,9 +44,6 @@
 					},
 					"ls_swapnarg_dl_properties_typeProperties_baseUrl": {
 						"value": "[parameters('ls_swapnarg_dl_properties_typeProperties_baseUrl')]"
-					},
-					"ls_dl_properties_typeProperties_url": {
-						"value": "[parameters('ls_dl_properties_typeProperties_url')]"
 					},
 					"ls_new_properties_typeProperties_url": {
 						"value": "[parameters('ls_new_properties_typeProperties_url')]"
