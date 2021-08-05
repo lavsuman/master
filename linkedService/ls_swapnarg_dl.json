@@ -1,11 +1,16 @@
 {
 	"name": "ls_swapnarg_dl",
-	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
+		"parameters": {
+			"secretkey": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "AzureKeyVault",
 		"typeProperties": {
 			"baseUrl": "https://keyswapna.vault.azure.net/"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
 }
