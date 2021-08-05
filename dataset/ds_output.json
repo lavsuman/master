@@ -2,7 +2,7 @@
 	"name": "ds_output",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ls_dl",
+			"referenceName": "ls_new",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
