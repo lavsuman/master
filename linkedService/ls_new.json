@@ -1,7 +1,12 @@
 {
 	"name": "ls_new",
-	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
+		"parameters": {
+			"ls_secret": {
+				"type": "String",
+				"defaultValue": "dlswapna"
+			}
+		},
 		"annotations": [],
 		"type": "AzureBlobFS",
 		"typeProperties": {
@@ -12,8 +17,12 @@
 					"referenceName": "ls_swapnarg_dl",
 					"type": "LinkedServiceReference"
 				},
-				"secretName": "dlswapna"
+				"secretName": {
+					"value": "@linkedService().ls_secret",
+					"type": "Expression"
+				}
 			}
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
 }
