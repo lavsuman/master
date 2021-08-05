@@ -1,11 +1,6 @@
 {
 	"name": "ls_swapnarg_dl",
 	"properties": {
-		"parameters": {
-			"secretkey": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"type": "AzureKeyVault",
 		"typeProperties": {
