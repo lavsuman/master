@@ -3,7 +3,18 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_new",
-			"type": "LinkedServiceReference"
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"secret": {
+					"value": "@dataset().key",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"key": {
+				"type": "string"
+			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
