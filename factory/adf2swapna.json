@@ -1,0 +1,16 @@
+{
+	"name": "adf2swapna",
+	"properties": {
+		"encryption": {
+			"VaultBaseUrl": "https://keyswapna.vault.azure.net",
+			"KeyName": "adf2swapnakey",
+			"KeyVersion": "d4182e17845b4ad5a328f7cee18788d6"
+		}
+	},
+	"location": "centralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "a3bff95c-acaf-4932-902c-e8b14d261ca2",
+		"tenantId": "25068a19-066a-4dc7-b9c3-30f609f7bfc4"
+	}
+}
