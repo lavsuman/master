@@ -23,19 +23,12 @@
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 8000
 						}
 					},
 					"sink": {
-						"type": "DelimitedTextSink",
-						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
-						}
+						"type": "AzureSqlSink"
 					},
 					"enableStaging": false,
 					"enableSkipIncompatibleRow": true,
@@ -55,140 +48,6 @@
 					},
 					"translator": {
 						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"source": {
-									"name": "Id",
-									"type": "Int16",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Id",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Correlationid",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Correlationid",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Operationname",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Operationname",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Status",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Status",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Eventcategory",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Eventcategory",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Level",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Level",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Time",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Time",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Subscription",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Subscription",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Eventinitiatedby",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Eventinitiatedby",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Resourcetype",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Resourcetype",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Resourcegroup",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Resourcegroup",
-									"type": "String",
-									"physicalType": "String"
-								}
-							}
-						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,
@@ -204,15 +63,35 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "ds_output",
+						"referenceName": "ds_sqldb",
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Copy data1",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "Error_Details",
+					"value": {
+						"value": "@activity('Copy data1').output.errors",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"variables": {
-			"error": {
-				"type": "String"
+			"Error_Details": {
+				"type": "Array"
 			}
 		},
 		"annotations": []
