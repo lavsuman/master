@@ -2,18 +2,15 @@
 	"name": "ds_new_input",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ls_new",
-			"type": "LinkedServiceReference",
-			"parameters": {
-				"ls_secret": "dlswapna"
-			}
+			"referenceName": "ls_dl",
+			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "Log (1).csv",
+				"fileName": "Log_Updated.csv",
 				"fileSystem": "input"
 			},
 			"columnDelimiter": ",",

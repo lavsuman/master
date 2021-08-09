@@ -2,11 +2,8 @@
 	"name": "ds_output",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ls_new",
-			"type": "LinkedServiceReference",
-			"parameters": {
-				"ls_secret": "dlswapna"
-			}
+			"referenceName": "ls_dl",
+			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
